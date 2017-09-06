@@ -87,7 +87,7 @@
         <div class="col-lg-8 mx-auto">
           <h2>Get Started</h2>
           <p>Think you're ready? Well then, get started!</p>
-          <a href="" class="btn btn-default btn-lg">Start</a>
+          <a href="puzzleindex.html" class="btn btn-default btn-lg">Start</a>
         </div>
       </div>
     </section>
@@ -97,7 +97,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Contact Us</h2>
+            <h2>Contact Us(Currently Not Working)</h2>
             <p>If you have a problem with the puzzles and the website please contact us below:</p>
           </div>
         </div>
@@ -105,7 +105,7 @@
           <div class="col-lg-8 mx-auto">
             <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
             <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-            <form name="sentMessage" id="contactForm" novalidate>
+            <form name="sentMessage" id="contactForm" method="post" action="contact_me.php">
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls">
                   <label>Name</label>
@@ -116,14 +116,14 @@
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls">
                   <label>Email Address</label>
-                  <input class="form-control" id="email" type="email" placeholder="Email Address" required data-validation-required-message="Please enter your email address.">
+                  <input class="form-control" id="email" type="text" placeholder="Email Address" required data-validation-required-message="Please enter your email address.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls">
                   <label>Phone Number</label>
-                  <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required data-validation-required-message="Please enter your phone number.">
+                  <input class="form-control" id="phone" type="text" placeholder="Phone Number" required data-validation-required-message="Please enter your phone number.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
