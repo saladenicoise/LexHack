@@ -12,32 +12,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$database = "2442002_users";
 
 
-	$db_found = new mysqli('fdb15.awardspace.net', '2442002_users', '931#^JVbQ8vh', $database );
+	$db = new mysqli('pdb9.awardspace.net', '2442002_users', '931#^JVbQ8vh', $database );
 
-	if ($db_found) {
+	if ($db->connect_error) {
+	    die("Connection failed: " . $db->connect_error);
+	}
 
-	$SQL = $db_found->prepare('SELECT UserName FROM login WHERE UserName = ?');
+	if ($db) {
+
+	$SQL = $db->prepare('SELECT * FROM login WHERE uname = ?');
 	$SQL->bind_param('s', $uname);
 	$SQL->execute();
-	$result = $SQL->get_result();
+	$SQL->store_result();
+	$result = $SQL->num_rows;
+	$SQL->close();
+		if ($result >= 1) {
 
-		if ($result->num_rows == 1) {
+			$stmt = $db->prepare('SELECT pword FROM login WHERE uname = ?');
+			if(!$stmt) {
+				$errorMessage1 = "Prepare failed: (" . $db->errno . ") " . $db->error;
+			}else{
+			$stmt->bind_param('s', $uname);
+			$stmt->execute();
+			$stmt->store_result();
+			$stmt->bind_result($hash);
+			$res = $stmt->fetch();
+			$stmt->close();
 
-			$db_field = $result->fetch_assoc();
-
-			if (password_verify($pword, $db_field['Password'])) {
+			if (password_verify($pword, $hash) && $res) {
 				session_start();
 				$_SESSION['login'] = "1";
 				header ("Location: page1.php");
-			}
-			else {
+			} else {
 				$errorMessage = "Login FAILED";
+				$errorMessage1 = "Pword:" . $pword . "Hash: " . $hash;
 				session_start();
 				$_SESSION['login'] = '';
 			}
+			}
 		}
 		else {
-			$errorMessage = "Username or Password is invalid! Please try again!";
+			$errorMessage = "Username or Password is invalid! Please try again!       ";
+			$errorMessage1 = "Result: " . $result;
 		}
 	}
 }
@@ -63,7 +79,7 @@ Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" m
 
 <P>
 <?PHP print $errorMessage;?>
-
+<?PHP print $errorMessage1;?>
 
 
 

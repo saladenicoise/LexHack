@@ -11,29 +11,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	$database = "2442002_users";
 
-	$db_found = new mysqli('fdb15.awardspace.net', '2442002_users', '931#^JVbQ8vh', $database );
+	$db = new mysqli('pdb9.awardspace.net', '2442002_users', '931#^JVbQ8vh', $database );
+	// Check connection
+	if ($db->connect_error) {
+	    die("Connection failed: " . $db->connect_error);
+	}
 
-	if ($db_found) {
-		$SQL = $db_found->prepare('SELECT UserName FROM login WHERE UserName = ?');
+	if ($db) {
+		$SQL = $db->prepare('SELECT * FROM login WHERE uname = ?');
 		$SQL->bind_param('s', $uname);
 		$SQL->execute();
-		$result = $SQL->get_result();
+		$SQL->store_result();
+		$result = $SQL->num_rows;
+		$SQL->close();
+			if ($result > 0) {
+			 $errorMessage = "Username already taken";
+		 } else {
+			 $phash = password_hash($pword, PASSWORD_DEFAULT);
+			 $stmt = $db->prepare("INSERT INTO login (uname, pword) VALUES (?, ?)");
+			 if (!$stmt) {
+				 $errorMessage = "Prepare failed: (" . $db->errno . ") " . $db->error;
 
-		if ($result->num_rows > 0) {
-			$errorMessage = "Username already taken";
-		}
-		else {
-			$phash = password_hash($pword, PASSWORD_DEFAULT);
-			$SQL = $db_found->prepare("INSERT INTO login (UserName, Password) VALUES (?, ?)");
-			$SQL->bind_param('ss', $uname, $phash);
-			$SQL->execute();
+			 }else{
+			 $stmt->bind_param('ss', $uname, $phash);
+			 $stmt->execute();
+			$stmt->close();
+			 header ("Location: login.php");
+			 $db->close();
+		 	}
 
-			header ("Location: login.php");
-		}
-	}
-	else {
-		$errorMessage = "Database Not Found";
-	}
+		 }
+	 }else {
+		 $errorMessage = "Database Not Found";
+	 }
+
+
 }
 ?>
 
