@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 			if (password_verify($pword, $hash) && $res) {
 				session_start();
 				$_SESSION['login'] = "1";
-				header ("Location: page1.php");
+				header ("Location: http://www.lexhak.tk/puzzleindex.php");
 			} else {
 				$errorMessage = "Login FAILED";
 				$errorMessage1 = "Pword:" . $pword . "Hash: " . $hash;
