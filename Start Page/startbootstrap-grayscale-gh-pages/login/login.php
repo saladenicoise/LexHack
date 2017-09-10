@@ -3,6 +3,8 @@ $uname = "";
 $pword = "";
 $errorMessage = "";
 
+if (isset($_SESSION['login']) && $_SESSION['login'] != '') { // Checks if Session is up(user has logged in)
+}else{
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	//require 'configure.php';
 
@@ -42,10 +44,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 			if (password_verify($pword, $hash) && $res) {
 				session_start();
 				$_SESSION['login'] = "1";
-				$login = "login";
-				$session = "1";
-				setcookie($login, $session, time() + 3600, "/");
-				header ("Location: http://www.lexhak.tk/puzzleindex.php");
+				if($uname == 'salad' || $uname == 'Soul') {
+					$admin = "admin";
+					$isAdmin = "1";
+					setcookie($admin, $isAdmin, time() + (86400 * 30), "/");
+					$errorMessage = "You have been logged in as admin!";
+					header ("Location: http://lexhak.tk/admin/admin.php");
+				}else{
+				header ("Location: http://lexhak.tk/puzzleindex.php");
+				exit();
+			}
 			} else {
 				$errorMessage = "Login FAILED";
 				$errorMessage1 = "Pword:" . $pword . "Hash: " . $hash;
@@ -60,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		}
 	}
 }
+}
 ?>
 
 
@@ -67,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 <script src="http://lexhak.tk/js/customjs.js"></script>
-<title>Basic Login Script</title>
+<title>Login Script</title>
 <style type="text/css">
 html,
 body {

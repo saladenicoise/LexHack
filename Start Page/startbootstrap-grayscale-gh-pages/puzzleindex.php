@@ -1,9 +1,9 @@
 <?PHP
 session_start();
-if ($_SESSION['login'] == '' && $_COOKIE[$login] != 'login') {
+if (isset($_SESSION['login']) && $_SESSION['login'] != '') { // Checks if Session is up(user has logged in)
+}else{
 	header ("Location: login/login.php");
 }
-
 ?>
 <html lang="en">
 
@@ -24,6 +24,7 @@ if ($_SESSION['login'] == '' && $_COOKIE[$login] != 'login') {
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style type="text/css">
 			.v-divider{
  				margin-left:30px;
@@ -50,7 +51,7 @@ if ($_SESSION['login'] == '' && $_COOKIE[$login] != 'login') {
               <a class="nav-link js-scroll-trigger" href="#">Level 1</a>
             </li>
 						<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" onclick="document.write('<?php session_destroy() ?>'); location.href = 'http://www.lexhak.tk/index.html';">Logout</a>
+              <a class="nav-link js-scroll-trigger" href="login/logout.php">Logout</a>
             </li>
           </ul>
         </div>
@@ -60,44 +61,23 @@ if ($_SESSION['login'] == '' && $_COOKIE[$login] != 'login') {
 		<div class="container" style="margin-top: 100px; margin-left:260px">
 			<div class="row">
 				<div class="col-3 col-lg-2">
-					<h5 style="margin-left:30px">Category 1</h5>
-					<div style="margin-left: 65px">
+					<h5 style="margin-left:30px">Cryptography</h5>
+					<div style="margin-left: 70px">
 					<br>
 					<a>Puzzle 1</a>
-					<br>
-					<br>
-					<br>
-					<br>
+					<a href="puzzles/cryptopuzzle1.php"><img src="img/file.7ebc5018.svg" height="60px" width="60px"></a>
 					<a>Puzzle 2</a>
-					<br>
-					<br>
-					<br>
-					<br>
+					<a href="puzzles/cryptopuzzle2.php"><img src="img/file.7ebc5018.svg" height="60px" width="60px"></a>
 					<a>Puzzle 3</a>
-					<br>
-					<br>
-					<br>
-					<br>
+					<a href="puzzles/cryptopuzzle3.php"><img src="img/file.7ebc5018.svg" height="60px" width="60px"></a>
 					<a>Puzzle 4</a>
-					<br>
-					<br>
-					<br>
-					<br>
+					<a href="puzzles/cryptopuzzle4.php"><img src="img/file.7ebc5018.svg" height="60px" width="60px"></a>
 					<a>Puzzle 5</a>
-					<br>
-					<br>
-					<br>
-					<br>
+					<a href="puzzles/cryptopuzzle5.php"><img src="img/file.7ebc5018.svg" height="60px" width="60px"></a>
 					<a>Puzzle 6</a>
-					<br>
-					<br>
-					<br>
-					<br>
+					<a href="puzzles/cryptopuzzle6.php"><img src="img/file.7ebc5018.svg" height="60px" width="60px"></a>
 					<a>Puzzle 7</a>
-					<br>
-					<br>
-					<br>
-					<br>
+					<a href="puzzles/cryptopuzzle7.php"><img src="img/file.7ebc5018.svg" height="60px" width="60px"></a>
 				</div>
 					<!--Icons Here-->
 				</div>

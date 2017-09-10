@@ -30,8 +30,9 @@ $headers .= "Reply-To: $email_address";
 if (mail ('jules.laptop@gmail.com', 'From: Website', $email_body, $headers)) {
 		echo "Success!";
 	} else {
-		echo "This has failed, please try again later!";
+		$errorMessage = "This has failed, please try again later!";
 	}
 return true;
+print $errorMessage;
 exit();
 ?>
