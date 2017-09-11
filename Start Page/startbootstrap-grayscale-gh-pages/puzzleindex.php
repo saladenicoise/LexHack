@@ -47,6 +47,9 @@ if (isset($_SESSION['login']) && $_SESSION['login'] != '') { // Checks if Sessio
               <a class="nav-link js-scroll-trigger" href="login/logout.php">Logout</a>
             </li>
 						<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="submit.php">Submit An Answer</a>
+            </li>
+						<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="admin/admin.php">Admin</a>
             </li>
           </ul>
@@ -163,7 +166,6 @@ if (isset($_SESSION['login']) && $_SESSION['login'] != '') { // Checks if Sessio
 				</div>
 			</div>
 		</div>
-
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/popper/popper.min.js"></script>
