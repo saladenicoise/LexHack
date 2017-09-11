@@ -68,7 +68,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] != '') { // Checks if Sessio
 					<div style="margin-left: 70px">
 					<br>
 					<a>Starting Easy</a>
-					<a href="puzzles/cryptopuzzle1.php"><img src="img/file.7ebc5018.svg" height="60px" width="60px"></a>
+					<a href="puzzles/Starting_Easy.php"><img src="img/file.7ebc5018.svg" height="60px" width="60px"></a>
 					<a>Puzzle 2</a>
 					<a href="puzzles/cryptopuzzle2.php"><img src="img/file.7ebc5018.svg" height="60px" width="60px"></a>
 					<a>Puzzle 3</a>
