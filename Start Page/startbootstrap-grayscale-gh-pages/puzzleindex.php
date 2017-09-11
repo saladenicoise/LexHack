@@ -53,6 +53,9 @@ if (isset($_SESSION['login']) && $_SESSION['login'] != '') { // Checks if Sessio
 						<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="login/logout.php">Logout</a>
             </li>
+						<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="admin/admin.php">Admin</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -64,7 +67,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] != '') { // Checks if Sessio
 					<h5 style="margin-left:30px">Cryptography</h5>
 					<div style="margin-left: 70px">
 					<br>
-					<a>Puzzle 1</a>
+					<a>Starting Easy</a>
 					<a href="puzzles/cryptopuzzle1.php"><img src="img/file.7ebc5018.svg" height="60px" width="60px"></a>
 					<a>Puzzle 2</a>
 					<a href="puzzles/cryptopuzzle2.php"><img src="img/file.7ebc5018.svg" height="60px" width="60px"></a>

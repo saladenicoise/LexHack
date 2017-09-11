@@ -22,22 +22,7 @@ input[type=password] {
    box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
-button {
-    background-color: black;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 10%;
-}
-
-/* Add a hover effect for buttons */
-button:hover {
-    opacity: 0.8;
-}
-
+/
 /* Extra style for the cancel button (red) */
 .cancelbtn {
     width: auto;
@@ -193,4 +178,13 @@ media_queries.css:83
   width:1px;
   height:100%;
   border-left:1px solid gray;
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
 }

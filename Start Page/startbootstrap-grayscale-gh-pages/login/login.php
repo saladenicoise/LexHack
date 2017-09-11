@@ -6,7 +6,7 @@ $errorMessage = "";
 if (isset($_SESSION['login']) && $_SESSION['login'] != '') { // Checks if Session is up(user has logged in)
 }else{
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-	//require 'configure.php';
+	require 'configure.php';
 
 	$uname = $_POST['username'];
 	$pword = $_POST['password'];
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$database = "2442002_users";
 
 
-	$db = new mysqli('pdb9.awardspace.net', '2442002_users', '931#^JVbQ8vh', $database );
+	$db = new mysqli(DB_SERVER, DB_USER, DB_PASS, $database );
 
 	if ($db->connect_error) {
 	    die("Connection failed: " . $db->connect_error);
